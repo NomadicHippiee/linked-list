@@ -70,7 +70,32 @@ export default class linkedList {
 
         return currentNode.value;
 
+    }
+    pop() {
+        if (this._head === null) {
+            return undefined;
+        }
+
+        let valueToReturn = this._head.value;
+
+        this._head = this._head.next;
+
+        this.length = this.length - 1;
+
+        return valueToReturn;
     } 
+    contains(value) {
+        let currentNode = this._head;
+
+        while (currentNode !== null) {
+            if (currentNode.value === value) {
+                return true;
+            }
+            currentNode = currentNode.next;
+        }
+
+        return false;
+    }
     toString() {
         if (this._head === null) {
             return "";
