@@ -1,16 +1,16 @@
 export default class linkedList {
     constructor() {
-        this.head = null;
+        this._head = null;
         this.length = 0;
     }
 
     append(value) {
         let newNode = new Node(value, null);
 
-        if (this.head === null) {
-            this.head = newNode;
+        if (this._head === null) {
+            this._head = newNode;
         } else {
-            let currentNode = this.head;
+            let currentNode = this._head;
 
             while (currentNode.next !== null) {
                 currentNode = currentNode.next;
@@ -24,11 +24,11 @@ export default class linkedList {
     prepend(value) {
         let newNode = new Node(value, null);
 
-        if (this.head === null) {
-            this.head = newNode;
+        if (this._head === null) {
+            this._head = newNode;
         } else {
-            newNode.next = this.head;
-            this.head = newNode;
+            newNode.next = this._head;
+            this._head = newNode;
         }
 
         this.length = this.length + 1;
@@ -36,13 +36,20 @@ export default class linkedList {
     size() {
         return this.length;
     }
+    head() {
+        if (this._head === null) {
+            return undefined;
+        } else {
+            return this._head.value;
+        }
+    }
     toString() {
-        if (this.head === null) {
+        if (this._head === null) {
             return "";
         }
 
         let result = "";
-        let currentNode = this.head;
+        let currentNode = this._head;
 
         while (currentNode !== null) {
             result +=  "( " + currentNode.value + " ) -> ";
