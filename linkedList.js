@@ -33,6 +33,9 @@ export default class linkedList {
 
         this.length = this.length + 1;
     }
+    size() {
+        return this.length;
+    }
     toString() {
         if (this.head === null) {
             return "";
