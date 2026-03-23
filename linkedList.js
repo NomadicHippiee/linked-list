@@ -55,6 +55,22 @@ export default class linkedList {
 
         return currentNode.value;
     }
+    at(index) {
+        if (index < 0 || index >= this.length) {
+            return undefined;
+        }
+
+        let currentNode = this._head;
+        let currentIndex = 0;
+
+        while (currentIndex < index) {
+            currentNode = currentNode.next;
+            currentIndex = currentIndex + 1; 
+        }
+
+        return currentNode.value;
+
+    } 
     toString() {
         if (this._head === null) {
             return "";
