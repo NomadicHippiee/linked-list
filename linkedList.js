@@ -128,6 +128,57 @@ export default class linkedList {
 
         return result;
     }
+    insertAt(index, ...values) {
+        if (index < 0 || index > this.length) {
+            throw new RangeError;
+        }
+
+        values.forEach((value) => {
+            let newNode = new Node(value, null);
+
+            if (index === 0) {
+                newNode.next = this._head;
+                this._head = newNode;
+                index = index + 1;
+            } else {
+                let currentNode = this._head;
+                let currentIndex = 0;
+
+                while (currentIndex < index - 1) {
+                    currentNode = currentNode.next;
+                    currentIndex = currentIndex + 1;
+                }
+
+                newNode.next = currentNode.next;
+                currentNode.next = newNode;
+                index = index + 1;
+
+            }
+
+            this.length = this.length + 1;
+        })
+    }
+    removeAt(index) {
+        if (index < 0 || index >= this.length) {
+            throw new RangeError;
+        }
+
+        if (index === 0) {
+            this._head = this._head.next;
+        } else {
+            let currentNode = this._head;
+            let currentIndex = 0;
+
+            while (currentIndex < index -1) {
+                currentNode = currentNode.next;
+                currentIndex = currentIndex + 1;
+            }
+
+            currentNode.next = currentNode.next.next;
+        }
+
+        this.length = this.length - 1;
+    }
 }
 
 class Node {
