@@ -96,6 +96,21 @@ export default class linkedList {
 
         return false;
     }
+    findIndex(value) {
+        let currentNode = this._head;
+        let currentIndex = 0;
+
+        while (currentNode !== null) {
+            if (currentNode.value === value) {
+                return currentIndex;
+            }
+            
+            currentNode = currentNode.next;
+            currentIndex = currentIndex + 1;
+        }
+
+        return -1
+    }
     toString() {
         if (this._head === null) {
             return "";
