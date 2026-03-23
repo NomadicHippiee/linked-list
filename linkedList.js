@@ -43,6 +43,18 @@ export default class linkedList {
             return this._head.value;
         }
     }
+    tail() {
+        if (this._head === null) {
+            return undefined;
+        }
+        let currentNode = this._head;
+
+        while (currentNode.next !== null) {
+            currentNode = currentNode.next;
+        }
+
+        return currentNode.value;
+    }
     toString() {
         if (this._head === null) {
             return "";
